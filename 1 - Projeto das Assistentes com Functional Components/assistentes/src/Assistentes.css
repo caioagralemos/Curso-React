@@ -1,0 +1,17 @@
+.Bloco{
+    height: 500px;
+    width: 200px;
+    padding: 30px;
+    /* border: 1px black solid; */
+    box-shadow: 1px 1px 1px 1px;
+    border-radius: 10%;
+    margin-top: auto;
+    margin: 10px;
+}
+
+.Bloco-imagem{
+    display: flex;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+}
