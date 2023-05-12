@@ -1,16 +1,15 @@
 import { useState } from "react"
-import {v4 as uuidv4} from 'uuid'
 function NewBook(props){
-    const [book, setBook] = useState({title: '', id: uuidv4()})
+    const [book, setBook] = useState('')
 
     const handleChange = (evt) => {
-        setBook({title: evt.target.value})
+        setBook(evt.target.value)
     }
 
     const handleSubmit = (evt) => {
         evt.preventDefault()
         props.addBook(book)
-        setBook({title: '', id: uuidv4()})
+        setBook('')
     } 
 
     return(

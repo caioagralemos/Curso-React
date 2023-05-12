@@ -1,39 +1,57 @@
 import './BookContainer.css'
 import Book from "./Book";
 import NewBook from "./NewBook";
-import { useState } from "react";
-function BookContainer(){
+import { useState, useEffect } from "react";
+import axios from 'axios';
+
+function BookContainer() {
     const [books, setBooks] = useState([])
-    const addBook = (book) => {
-        setBooks([...books, book])
+
+    const fetchBooks = async () => {
+        const response = await axios.get('http://localhost:3001/books')
+        setBooks(response.data)
     }
+
+    useEffect(() => {
+        fetchBooks()
+    }, []) //[] executa apenas depois do primeiro render, sem ele executa a cada render, e um [contador] executa a cada render onde o contador muda
+
+    const addBook = async (book) => {
+        const response = await axios.post('http://localhost:3001/books', {
+            title: book
+        })
+        const newBooks = [
+            ...books, response.data
+        ]
+        setBooks(newBooks)
+        // setBooks([...books, book])
+    }
+
     const editBook = (titulo, id) => {
         const newBooks = books.map(book => {
-            if(book.id === id) {
-                return {...book, title: titulo}
+            if (book.id === id) {
+                return { ...book, title: titulo }
             } else {
                 return book
             }
         })
         setBooks(newBooks)
     }
-    const deleteBook = (id) => {
-        const newBooks = books.filter((book) => {
-            return book.id !== id
-    })
-        setBooks(newBooks)
+    const deleteBook = async (id) => {
+        await axios.delete(`http://localhost:3001/books/${id}`)
+        fetchBooks()
     }
     const renderedBooks = books.map((book, index) => (
-        <Book name={book.title} key={index} id={book.id} editBook={editBook} deleteBook={deleteBook}/>
+        <Book name={book.title} key={index} id={book.id} editBook={editBook} deleteBook={deleteBook} />
     ))
-    return(
+    return (
         <div className="app">
             <h1>Lista de Leitura</h1>
             <div className="books">
                 {renderedBooks}
             </div>
             <NewBook
-            addBook={addBook}
+                addBook={addBook}
             />
         </div>
     )
