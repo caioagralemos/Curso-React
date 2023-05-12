@@ -11,12 +11,7 @@ function ImageList({imagens}) {
         })
 
     return(
-        // <div>{images}</div>
-        <div><Imagem
-        url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5bc_8k6elbGhjaElqZjPzgwBNIqHNT-s_HzsMBmv6gQ&s'
-        description='pig'
-        key='zzzz'
-        /></div>
+        <div>{images}</div>
     )
 }
 
