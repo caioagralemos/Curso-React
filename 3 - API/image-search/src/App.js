@@ -1,9 +1,10 @@
 import './App.css';
+import SearchEngine from './SearchEngine';
 
 function App() {
   return (
     <div className="App">
-      <div>App</div>
+      <SearchEngine />
     </div>
   );
 }

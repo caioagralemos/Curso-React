@@ -1,4 +1,6 @@
-function Image(){
-
+function Imagem(props){
+    return(
+        <image src={props.url} alt={props.description} />
+    )
 }
-export default Image
+export default Imagem
