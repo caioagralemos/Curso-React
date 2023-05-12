@@ -1,0 +1,12 @@
+{
+  "books": [
+    {
+      "title": "React 101 - Learning the Basics",
+      "id": 1
+    },
+    {
+      "title": "Harry Potter and the Goblet of Fire",
+      "id": 2
+    }
+  ]
+}
