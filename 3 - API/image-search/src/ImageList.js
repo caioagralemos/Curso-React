@@ -1,4 +1,5 @@
 import Imagem from "./Image";
+import './ImageList.css'
 
 function ImageList({imagens}) {
 
@@ -7,11 +8,12 @@ function ImageList({imagens}) {
             url={r.urls.small}
             description={r.alt_description}
             key={r.id}
+            link={r.urls.regular}
             />
         })
 
     return(
-        <div>{images}</div>
+        <div className="image-list">{images}</div>
     )
 }
 

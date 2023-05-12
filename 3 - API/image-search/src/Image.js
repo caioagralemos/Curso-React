@@ -1,6 +1,6 @@
 function Imagem(props){
     return <div>
-        <img src={props.url} alt={props.description}/>
+        <a href={props.link}><img src={props.url} alt={props.description}/></a>
     </div>
 }
 export default Imagem

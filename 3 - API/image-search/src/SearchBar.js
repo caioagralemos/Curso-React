@@ -1,4 +1,5 @@
 import { useState } from "react"
+import './SearchBar.css'
 function SearchBar(props){
     const [search, setSearch] = useState('')
     const handleChange = (evt) => {
@@ -10,15 +11,17 @@ function SearchBar(props){
         setSearch('')
     }
     return(
+        <div className="search-bar">
         <form onSubmit={handleSubmit}>
+            <label>o que você quer ver hoje?</label>
             <input 
                 type="text"
                 name="search-txt"
                 onChange={handleChange}
                 value={search}
             />
-            <button>search</button>
         </form>
+        </div>
     )
 }
 export default SearchBar

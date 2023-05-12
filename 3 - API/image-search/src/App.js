@@ -1,5 +1,4 @@
 import SearchEngine from './SearchEngine';
-
 function App() {
   return (
     <div className="App">
