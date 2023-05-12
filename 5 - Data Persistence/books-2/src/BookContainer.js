@@ -16,6 +16,10 @@ function BookContainer() {
         fetchBooks()
     }, []) //[] executa apenas depois do primeiro render, sem ele executa a cada render, e um [contador] executa a cada render onde o contador muda
 
+    useEffect(() => {
+        console.log(books)
+    }) //[] executa apenas depois do primeiro render, sem ele executa a cada render, e um [contador] executa a cada render onde o contador muda
+
     const addBook = async (book) => {
         const response = await axios.post('http://localhost:3001/books', {
             title: book
@@ -27,15 +31,11 @@ function BookContainer() {
         // setBooks([...books, book])
     }
 
-    const editBook = (titulo, id) => {
-        const newBooks = books.map(book => {
-            if (book.id === id) {
-                return { ...book, title: titulo }
-            } else {
-                return book
-            }
+    const editBook = async (titulo, id) => {
+        await axios.put(`http://localhost:3001/books/${id}`, {
+            title: titulo
         })
-        setBooks(newBooks)
+        fetchBooks()
     }
     const deleteBook = async (id) => {
         await axios.delete(`http://localhost:3001/books/${id}`)
