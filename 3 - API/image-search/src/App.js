@@ -1,4 +1,3 @@
-import './App.css';
 import SearchEngine from './SearchEngine';
 
 function App() {

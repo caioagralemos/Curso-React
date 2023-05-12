@@ -5,8 +5,7 @@ function SearchBar(props){
         setSearch(evt.target.value)
     }
     const handleSubmit = (evt) => {
-        evt.preventDefault()
-        console.log(search)
+        evt.preventDefault() 
         props.handleSearch(search)
         setSearch('')
     }

@@ -1,6 +1,6 @@
 import api from "./api";
 import SearchBar from "./SearchBar";
-import Imagem from "./Image";
+import ImageList from "./ImageList";
 import { useState } from "react";
 
 function SearchEngine () {
@@ -8,24 +8,15 @@ function SearchEngine () {
     const handleSearch = async (q) => {
         const responseZ = await api(q)
         setResponse(responseZ)
-        
     }
-
-    const images = res.map(r => {
-        return <Imagem
-            url={r.urls.regular}
-            description={r.alt_description}
-            />
-        })
     
     return (
         <div>
             <SearchBar 
                 handleSearch={handleSearch}
             />
-            <div>
-                {images}
-            </div>
+            <ImageList imagens={res} />
+
         </div>
     )
 }
