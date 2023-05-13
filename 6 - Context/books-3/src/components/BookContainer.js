@@ -1,14 +1,13 @@
-import './BookContainer.css'
+import '../stylesheets/BookContainer.css'
 import Book from "./Book";
 import NewBook from "./NewBook";
-import { useContext } from "react";
-import BooksContext from './context/books';
+import useBooksContext from '../hooks/use-books-context';
 
 function BookContainer() {
-    const { books } = useContext(BooksContext)
+    const { books } = useBooksContext()
 
     const renderedBooks = books.map((book, index) => (
-        <Book id={book.id} book={book} key={index}/>
+        <Book id={book.id} book={book} key={index} />
     ))
     return (
         <div className="app">
@@ -18,7 +17,7 @@ function BookContainer() {
             <div className="books">
                 {renderedBooks}
             </div>
-            <NewBook/>
+            <NewBook />
         </div>
     )
 }

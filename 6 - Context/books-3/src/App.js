@@ -1,5 +1,5 @@
-import BookContainer from './BookContainer';
-import './App.css';
+import BookContainer from './components/BookContainer';
+import './stylesheets/App.css';
 
 function App() {
   return (

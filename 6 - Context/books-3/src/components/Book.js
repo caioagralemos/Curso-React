@@ -1,9 +1,10 @@
-import { useState, useContext } from "react"
-import BooksContext from "./context/books"
-function Book(props){
-    const {editBook, deleteBook} = useContext(BooksContext)
+import { useState } from "react"
+import useBooksContext from '../hooks/use-books-context';
 
-    const {book} = props
+function Book(props) {
+    const { editBook, deleteBook } = useBooksContext()
+
+    const { book } = props
     const [titulo, setTitulo] = useState(book.title)
     const [isEditing, setEditing] = useState(false)
     const toggleEdit = () => {
@@ -20,27 +21,27 @@ function Book(props){
     const handleDelete = (evt) => {
         deleteBook(book.id)
     }
-    if(isEditing === true) {
-        return(
+    if (isEditing === true) {
+        return (
             <div className="book-show">
                 <form>
-                    <input 
-                    value={titulo}
-                    name="title"
-                    onChange={handleChange}
+                    <input
+                        value={titulo}
+                        name="title"
+                        onChange={handleChange}
                     />
                     <button onClick={handleSubmit}>ok</button>
                 </form>
             </div>
         )
     } else {
-        return(
+        return (
             <div className="book-show">
                 <img alt="imagem" src={`https://picsum.photos/seed/${book.title}/300/200`} />
                 {book.title}
                 <div className="actions">
-                <button className="edit" onClick={toggleEdit}>editar</button>
-                <button className="delete" onClick={handleDelete}>excluir</button>
+                    <button className="edit" onClick={toggleEdit}>editar</button>
+                    <button className="delete" onClick={handleDelete}>excluir</button>
                 </div>
             </div>
         )
