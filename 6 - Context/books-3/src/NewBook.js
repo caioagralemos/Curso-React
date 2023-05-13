@@ -1,6 +1,8 @@
-import { useState } from "react"
-function NewBook(props){
+import { useState, useContext } from "react"
+import BooksContext from "./context/books"
+function NewBook(){
     const [book, setBook] = useState('')
+    const { addBook } = useContext(BooksContext)
 
     const handleChange = (evt) => {
         setBook(evt.target.value)
@@ -8,7 +10,7 @@ function NewBook(props){
 
     const handleSubmit = (evt) => {
         evt.preventDefault()
-        props.addBook(book)
+        addBook(book)
         setBook('')
     } 
 
