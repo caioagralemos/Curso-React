@@ -1,0 +1,17 @@
+.WiseSquare{
+    height: 5em;
+    width: 5em;
+    background-color: purple;
+    border-radius: 10%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.WiseSquare:hover{
+    background-color: blueviolet;
+}
+
+.emoji{
+    font-size: 50px;
+}

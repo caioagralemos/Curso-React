@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="styles.css">
+  <title>Teste de JSX</title>
+</head>
+<body>
+  <div id="root">
+    <App />
+  </div>
+  <!-- incluindo react -->
+  <script src="https://unpkg.com/react/umd/react.development.js"></script> 
+  <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+
+  <!-- babel serve para usar código html no nosso js -->
+  <script src="https://unpkg.com/babel-standalone"></script>
+
+  <!-- nosso file react (text/jsx avisa que é react) e o index tem que vir por último -->
+  <script src="conditionals.js" type="text/jsx"></script>
+  <script src="mood.js" type="text/jsx"></script>
+  <script src="index.js" type="text/jsx"></script>
+
+</script>
+</body>
+</html>

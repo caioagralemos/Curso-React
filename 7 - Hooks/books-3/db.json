@@ -1,0 +1,36 @@
+{
+  "books": [
+    {
+      "title": "React 101 - Fundamentos",
+      "id": 1
+    },
+    {
+      "title": "Minecraft Trials",
+      "id": 3
+    },
+    {
+      "title": "Um bom livro",
+      "id": 4
+    },
+    {
+      "title": "Peppa Pig - Os Segredos de George",
+      "id": 5
+    },
+    {
+      "title": "The Witcher",
+      "id": 6
+    },
+    {
+      "title": "Diary of a Wimpy Kid: Dog Days",
+      "id": 7
+    },
+    {
+      "title": "Harry Potter and The Goblet of Fire (IV)",
+      "id": 8
+    },
+    {
+      "title": "Bro!",
+      "id": 9
+    }
+  ]
+}

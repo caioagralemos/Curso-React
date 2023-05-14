@@ -1,0 +1,9 @@
+.Dog {
+    background-color: gray;
+}
+
+.Dog-img {
+    max-height: 300px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
