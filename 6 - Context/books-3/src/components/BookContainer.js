@@ -2,9 +2,14 @@ import '../stylesheets/BookContainer.css'
 import Book from "./Book";
 import NewBook from "./NewBook";
 import useBooksContext from '../hooks/use-books-context';
+import { useEffect } from 'react';
 
 function BookContainer() {
-    const { books } = useBooksContext()
+    const { books, stableFetchBooks } = useBooksContext()
+
+    useEffect(() => {
+        stableFetchBooks()
+    }, [stableFetchBooks])
 
     const renderedBooks = books.map((book, index) => (
         <Book id={book.id} book={book} key={index} />

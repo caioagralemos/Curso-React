@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useCallback } from "react";
 import axios from 'axios';
 
 const BooksContext = createContext()
@@ -6,19 +6,25 @@ const BooksContext = createContext()
 function Provider({ children }) {
     const [books, setBooks] = useState([])
 
-    useEffect(() => {
-        fetchBooks()
-    }, [])
-    //[] executa apenas depois do primeiro render, sem ele executa a cada render, e um [contador] executa a cada render onde o contador muda
+    // useEffect(() => {
+    //     fetchBooks()
+    // }, [])
+    // //[] executa apenas depois do primeiro render, sem ele executa a cada render, e um [contador] executa a cada render onde o contador muda
 
-    useEffect(() => {
-        console.log(books)
-    }) // executa a cada render
+    // useEffect(() => {
+    //     console.log(books)
+    // }) // executa a cada render
 
     const fetchBooks = async () => {
         const response = await axios.get('http://localhost:3001/books')
         setBooks(response.data)
     }
+
+    const stableFetchBooks = useCallback( // useCallback serve pra evitar erros no useEffect.
+        // o trabalho dele é meio que criar uma func que avisa ao useEffect que não vai mudar ao ser renderizada
+        fetchBooks,
+        []
+    )
 
     const addBook = async (book) => {
         const response = await axios.post('http://localhost:3001/books', {
@@ -47,7 +53,7 @@ function Provider({ children }) {
         deleteBook,
         editBook,
         addBook,
-        fetchBooks
+        stableFetchBooks
     }
 
     return(
