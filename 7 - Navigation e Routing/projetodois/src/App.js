@@ -1,12 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import Botao from "./components/button"
 
 function App() {
-  return (
-    <div className="App">
-      piggy
-    </div>
-  );
+    return (
+        <div className="App">
+            <Botao>Pix agora 1500</Botao>
+            <Botao primary secondary />
+        </div>
+    )
 }
 
-export default App;
+export default App
