@@ -2,11 +2,14 @@ import Botao from "./components/button"
 import {GoAlert} from 'react-icons/go'
 
 function App() {
+    const handleClick = () => {
+        console.log('clicked!')
+    }
     return (
         <div className="App">
             <div>
-                <Botao>Plain</Botao>
-                <Botao rounded>Plain</Botao>
+                <Botao onClick={handleClick}>Plain</Botao>
+                <Botao rounded onMouseEnter={handleClick}>Plain</Botao>
                 <Botao outline>Plain</Botao>
                 <Botao outline rounded>Plain</Botao>
             </div>
@@ -17,7 +20,7 @@ function App() {
                 <Botao primary outline rounded>Primary</Botao>
             </div>
             <div>
-                <Botao secondary>Secondary</Botao>
+                <Botao secondary className='mb-5'>Secondary</Botao>
                 <Botao secondary rounded>Secondary</Botao>
                 <Botao secondary outline>Secondary</Botao>
                 <Botao secondary outline rounded>Secondary</Botao>
