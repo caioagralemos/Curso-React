@@ -9,6 +9,7 @@ function Botao({ children = "Ok",
     danger,
     outline,
     rounded,
+    className,
     ...rest }) {
 
     const finalClassName = classnames('flex', 'itens-center', 'border', 'px-3', 'py-1.5', 'm-3', {
@@ -27,7 +28,7 @@ function Botao({ children = "Ok",
         'border-red-600': danger,
         'rounded-3xl': rounded,
         'border-black': !primary && !secondary && !success && !warning && !danger
-    }, rest.className)
+    }, className)
 
     return (
         <button className={finalClassName} {...rest}>
