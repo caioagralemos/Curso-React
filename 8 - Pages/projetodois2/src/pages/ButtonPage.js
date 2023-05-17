@@ -1,12 +1,12 @@
-import Botao from "./components/button"
+import Botao from "../components/button"
 import {GoAlert} from 'react-icons/go'
 
-function App() {
+function ButtonPage() {
     const handleClick = () => {
         console.log('clicked!')
     }
     return (
-        <div className="App">
+        <div className="ButtonPage">
             <div>
                 <Botao onClick={handleClick}>Plain</Botao>
                 <Botao rounded onMouseEnter={handleClick}>Plain</Botao>
@@ -47,4 +47,4 @@ function App() {
     )
 }
 
-export default App
+export default ButtonPage
