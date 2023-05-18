@@ -17,7 +17,7 @@ function NavigationProvider({children}) {
         window.history.pushState({}, '', to)
         setPath(to)
     }
-    return <NavigationContext.Provider value={{}}>
+    return <NavigationContext.Provider value={{currentPath, navigate}}>
         {currentPath}
         {children}
     </NavigationContext.Provider>
