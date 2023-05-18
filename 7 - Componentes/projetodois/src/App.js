@@ -3,8 +3,12 @@ import { useState } from "react"
 
 function App() {
     const [color, setColor] = useState({label: 'Select', value: 'white'})
+    const [color2, setColor2] = useState({label: 'Select', value: 'white'})
     const handleColor = (arg) => {
         setColor(arg)
+    }
+    const handleColor2 = (arg) => {
+        setColor2(arg)
     }
     const options = [
         {
@@ -26,8 +30,12 @@ function App() {
     ]
     return(
         <div className="flex">
-        <div style={{ backgroundColor: color.value }}><Dropdown options={options} value={color} onChange={handleColor}/></div>
-        <div style={{ backgroundColor: color.value }}><Dropdown options={options} value={color} onChange={handleColor}/></div>
+            <div>
+                <div style={{ backgroundColor: color.value }}><Dropdown options={options} value={color} onChange={handleColor}/></div>
+            </div>
+            <div>
+                <div style={{ backgroundColor: color2.value }}><Dropdown options={options} value={color2} onChange={handleColor2}/></div>
+            </div>
         </div>
     )
 }
