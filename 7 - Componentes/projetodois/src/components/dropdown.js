@@ -1,21 +1,24 @@
 import { useState } from "react"
-function Dropdown({options, handleColor, selection}) {
+import { GoChevronDown, GoChevronLeft } from "react-icons/go";
+import Panel from "./panel";
+
+function Dropdown({options, onChange, value}) {
     const [isOpen, setOpen] = useState(false)
     const opcoes = options.map((opcao, index) => {
-        return <div key={opcao.value} onClick={() => handleColorClick(opcao)}>{opcao.label}</div>
+        return <div className="hover:bg-sky-100 rounded cursor-pointer p-1" key={opcao.value} onClick={() => handleColorClick(opcao)}>{opcao.label}</div>
     })
     const toggleOpen = () => {
         setOpen(!isOpen)
     }
     const handleColorClick = (cor) => {
-        handleColor(cor)
+        onChange(cor)
         setOpen(false)
 
     }
     return (
-        <div>
-            <h1 className="text-xl" onClick={toggleOpen}>{selection.label}</h1>
-            {isOpen && <div>{opcoes}</div>}
+        <div className="w-48 relative">
+            <Panel className="flex justify-between items-center cursor-pointer" onClick={toggleOpen}>{value.label}{isOpen ? <GoChevronLeft /> : <GoChevronDown />}</Panel>
+            {isOpen && <Panel className="absolute top-full">{opcoes}</Panel>}
         </div>
     )
 }

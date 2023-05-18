@@ -24,7 +24,12 @@ function App() {
             value:'blue'
         }
     ]
-    return<div style={{ backgroundColor: color.value }}><Dropdown options={options} selection={color} handleColor={handleColor}/></div>
+    return(
+        <div className="flex">
+        <div style={{ backgroundColor: color.value }}><Dropdown options={options} value={color} onChange={handleColor}/></div>
+        <div style={{ backgroundColor: color.value }}><Dropdown options={options} value={color} onChange={handleColor}/></div>
+        </div>
+    )
 }
 
 export default App
