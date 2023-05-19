@@ -1,4 +1,4 @@
-import Link from "./components/link"
+import Sidebar from "./components/sidebar"
 import Route from "./components/route"
 import AccordionPage from './pages/AccordionPage'
 import ButtonPage from './pages/ButtonPage'
@@ -6,9 +6,7 @@ import DropdownPage from './pages/DropdownPage'
 function App() {
     return (
         <div className="App">
-            <Link to='/accordion'>Accordion</Link>
-            <Link to='/button'>Button</Link>
-            <Link to='/dropdown'>Dropdown</Link>
+            <Sidebar />
             <div>
                 <Route path='/accordion'>
                     <AccordionPage />
