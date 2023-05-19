@@ -4,11 +4,15 @@ import { useState } from "react"
 function DropdownPage() {
     const [color, setColor] = useState({label: 'Select', value: 'white'})
     const [color2, setColor2] = useState({label: 'Select', value: 'white'})
+    const [color3, setColor3] = useState({label: 'Select', value: 'white'})
     const handleColor = (arg) => {
         setColor(arg)
     }
     const handleColor2 = (arg) => {
         setColor2(arg)
+    }
+    const handleColor3 = (arg) => {
+        setColor3(arg)
     }
     const options = [
         {
@@ -24,6 +28,14 @@ function DropdownPage() {
             value:'white'
         },
         {
+            label: 'Preto',
+            value:'black'
+        },
+        {
+            label: 'Verde',
+            value:'green'
+        },
+        {
             label: 'Azul',
             value:'blue'
         }
@@ -35,6 +47,9 @@ function DropdownPage() {
             </div>
             <div>
                 <div style={{ backgroundColor: color2.value }}><Dropdown options={options} value={color2} onChange={handleColor2}/></div>
+            </div>
+            <div>
+                <div style={{ backgroundColor: color3.value }}><Dropdown options={options} value={color3} onChange={handleColor3}/></div>
             </div>
         </div>
     )
