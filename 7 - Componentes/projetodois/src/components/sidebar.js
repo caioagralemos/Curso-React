@@ -14,6 +14,10 @@ function Sidebar(){
             label: 'Dropdown',
             path: '/dropdown'
         },
+        {
+            label: 'Modal',
+            path: '/modal'
+        }
     ]
     const renderedLinks = links.map((link) => {
         return <Link to={link.path}>{link.label}</Link>
