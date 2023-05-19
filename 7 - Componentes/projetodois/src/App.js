@@ -5,7 +5,7 @@ import ButtonPage from './pages/ButtonPage'
 import DropdownPage from './pages/DropdownPage'
 function App() {
     return (
-        <div className="App">
+        <div className="container mx-auto grid grid-cols-6 gap-4 mt-4">
             <Sidebar />
             <div>
                 <Route path='/accordion'>

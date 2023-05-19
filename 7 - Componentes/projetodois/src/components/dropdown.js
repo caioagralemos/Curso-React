@@ -33,7 +33,7 @@ function Dropdown({options, onChange, value}) {
     }
 
     return (
-        <div ref={divEl} className="w-48 relative">
+        <div ref={divEl} className="w-48 p-1 relative">
             <Panel className="flex justify-between items-center cursor-pointer" onClick={toggleOpen}>{value.label}{isOpen ? <GoChevronLeft /> : <GoChevronDown />}</Panel>
             {isOpen && <Panel className="absolute top-full">{opcoes}</Panel>}
         </div>

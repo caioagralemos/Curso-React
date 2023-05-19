@@ -3,7 +3,7 @@ import {GoAlert} from 'react-icons/go'
 
 function ButtonPage() {
     const handleClick = () => {
-        console.log('clicked!')
+        return
     }
     return (
         <div className="ButtonPage">
