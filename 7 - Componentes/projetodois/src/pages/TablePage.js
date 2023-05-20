@@ -14,11 +14,11 @@ function TablePage() {
         },
         { 
             label: 'Color',
-            render: (data) => <div className={`p-2 m-3 ${data.color}`} />
+            render: (data) => <div className={`p-2 m-3 border border-black ${data.color}`} />
         },
         { 
             label: 'Score',
-            render: (data)
+            render: (data) => data.score
         }
     ]
     return <Table data={data} config={config} />

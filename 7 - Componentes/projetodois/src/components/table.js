@@ -4,12 +4,12 @@ function Table({data, config}) {
         return <th key={column.label}>{column.label}</th>
     })
     const times = data.map((time, index) => {
-        const classe = classNames(time.color, 'border', 'border-black', 'p-3', 'm-2')
+        const renderedCells = config.map((column, index) => {
+            return <td key={column.label} className="p-3">{column.render(time)}</td>
+        })
         return (
             <tr className="border-b" key={time.name}>
-                <td className="p-3">{time.name}</td>
-                <td className='p-3'><div className={classe}></div></td>
-                <td className="p-3">{time.score}</td>
+                {renderedCells}
             </tr>
         )
     })
