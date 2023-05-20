@@ -24,7 +24,7 @@ function Sidebar(){
         }
     ]
     const renderedLinks = links.map((link) => {
-        return <Link to={link.path}>{link.label}</Link>
+        return <Link key={link.label} to={link.path}>{link.label}</Link>
     })
     return(
         <div className="sticky top-0 overflow-y-scroll flex flex-col items-start">
