@@ -1,5 +1,8 @@
 import classNames from "classnames"
-function Table({data}) {
+function Table({data, config}) {
+    const renderedHeaders = config.map((column) => {
+        return <th key={column.label}>{column.label}</th>
+    })
     const times = data.map((time, index) => {
         const classe = classNames(time.color, 'border', 'border-black', 'p-3', 'm-2')
         return (
@@ -14,9 +17,7 @@ function Table({data}) {
         <table className="table-auto border-spacing-2">
             <thead>
                 <tr className="border-b-2">
-                    <th>Times</th>
-                    <th>Cor</th>
-                    <th>Pontos</th>
+                    {renderedHeaders}
                 </tr>
             </thead>
             <tbody>
