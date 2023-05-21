@@ -7,7 +7,7 @@ function Sidebar(){
             path: '/accordion'
         },
         {
-            label: 'Button',
+            label: 'Buttons',
             path: '/button'
         },
         {
