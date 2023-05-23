@@ -10,19 +10,26 @@ function TablePage() {
     const config = [
         { 
             label: 'Cor',
-            render: (data) => <div className={`p-2 m-3 border border-black ${data.color}`} />
+            render: (data) => <div className={`p-2 m-3 border border-black ${data.color}`} />,
+            header: () => <th className="bg-red-500">Cor</th>
         },
         {
             label: 'Time',
-            render: (data) => data.name
+            render: (data) => data.name,
+            header: () => <th>Time</th>,
+            sortValue:
         },
         { 
             label: 'Pontos',
-            render: (data) => data.score
+            render: (data) => data.score,
+            header: () => <th>Pontos</th>,
+            sortValue:
         },
         {
             label: 'Gols',
-            render: (data) => data.goals
+            render: (data) => data.goals,
+            header: () => <th>Gols</th>,
+            sortValue:
         }
     ]
     const keyfunc = (data) => {
