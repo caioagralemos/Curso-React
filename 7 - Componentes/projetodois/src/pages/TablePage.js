@@ -1,4 +1,4 @@
-// import Table from "../components/table";
+import Table from "../components/table";
 import SortableTable from "../components/sortabletable";
 
 function TablePage() {
@@ -9,7 +9,7 @@ function TablePage() {
         { name: 'Suíça', color: 'bg-red-500', score: 5, goals: 8 }
     ]
     const config = [
-        { 
+        {
             label: 'Cor',
             render: (data) => <div className={`p-2 m-3 border border-black ${data.color}`} />,
             // header: () => <th>Cor</th>
@@ -18,9 +18,9 @@ function TablePage() {
             label: 'Time',
             render: (data) => data.name,
             // header: () => <th>Time</th>,
-            sortValue: (data) => data.name 
+            sortValue: (data) => data.name
         },
-        { 
+        {
             label: 'Pontos',
             render: (data) => data.score,
             // header: () => <th>Pontos</th>,
@@ -36,6 +36,13 @@ function TablePage() {
     const keyfunc = (data) => {
         return data.name
     }
-    return <SortableTable keyfunc={keyfunc} data={data} config={config} />
+    return (
+        <div>
+            <h1 className="mb-6 text-xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-dark">Non Sortable Table</h1>
+            <Table keyfunc={keyfunc} data={data} config={config} />
+            <h1 className="mb-8 mt-4 text-xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-dark">Sortable Table</h1>
+            <SortableTable keyfunc={keyfunc} data={data} config={config} />
+        </div>
+    )
 }
 export default TablePage
