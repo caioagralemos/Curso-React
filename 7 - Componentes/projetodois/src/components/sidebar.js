@@ -11,6 +11,10 @@ function Sidebar(){
             path: '/button'
         },
         {
+            label: 'Counter',
+            path: '/counter'
+        },
+        {
             label: 'Dropdown',
             path: '/dropdown'
         },
@@ -21,10 +25,6 @@ function Sidebar(){
         {
             label: 'Table',
             path: '/table'
-        },
-        {
-            label: 'Counter',
-            path: '/counter'
         }
     ]
     const renderedLinks = links.map((link) => {
