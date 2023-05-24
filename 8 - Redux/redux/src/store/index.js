@@ -9,14 +9,43 @@ const songsSlice = createSlice({
             state.push(action.payload)
         }, 
         removeSong(state, action) {
-            //
+            // console.log(action.payload) é uma string com o nome da música que queremos deletar
+            const index = state.indexOf(action.payload)
+            state.splice(index, 1)
+        },
+        resetSongs(state, action) {
+            return [] // para reassignar nosso state precisamos retornar!!
+        }
+    },
+    extraReducers(builder) {
+        builder.addCase(moviesSlice.actions.resetMovies, (state, action) => {
+            return [] // quando ele escutar que resetMovies for chamado, executa a arrow func
+        })
+    }
+})
+
+const moviesSlice = createSlice({
+    name: 'movie',
+    initialState: ['Jurassic Park', 'Harry Potter'],
+    reducers: {
+        addMovie(state, action) {
+            state.push(action.payload)
+        }, 
+        removeMovie(state, action) {
+            const index = state.indexOf(action.payload)
+            state.splice(index, 1)
+        },
+        resetMovies(state, action) {
+            console.log(action)
+            return []
         }
     }
 })
 
 const store = configureStore({
     reducer: {
-        songs: songsSlice.reducer // daqui sai o songs
+        songs: songsSlice.reducer, // daqui sai o songs
+        movies: moviesSlice.reducer
     }
 })
 
@@ -35,3 +64,5 @@ const store = configureStore({
 // console.log(store.getState())
 
 export {store}
+export const {addSong, removeSong, resetSongs} = songsSlice.actions
+export const {addMovie, removeMovie, resetMovies} = moviesSlice.actions
