@@ -1,7 +1,7 @@
 import "./styles.css";
 import MoviePlaylist from "./components/MoviePlaylist";
 import SongPlaylist from "./components/SongPlaylist";
-import { resetMovies } from "./store";
+import { reset } from "./store";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function App() {
@@ -10,7 +10,7 @@ export default function App() {
   })
   const dispatch = useDispatch()
   const handleResetClick = () => {
-    dispatch(resetMovies(movies))
+    dispatch(reset()) // despacha uma ação com type passado por parâmetro n
   };
 
   return (
