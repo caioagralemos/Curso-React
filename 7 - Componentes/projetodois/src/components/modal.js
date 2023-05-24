@@ -1,4 +1,3 @@
-import Botao from "./button"
 import ReactDOM from "react-dom"
 import { useEffect } from "react"
 

@@ -6,12 +6,13 @@ import DropdownPage from './pages/DropdownPage'
 import ModalPage from "./pages/ModalPage"
 import TablePage from "./pages/TablePage"
 import CounterPage from "./pages/CounterPage"
+import SortableList from "./pages/ListPage"
 
 function App() {
     return (
         <div className="container mx-auto grid grid-cols-6 gap-4 mt-4">
             <Sidebar />
-            <div>
+            <div className="col-span-5">
                 <Route path='/accordion'>
                     <AccordionPage />
                 </Route>
@@ -28,7 +29,10 @@ function App() {
                     <TablePage />
                 </Route>
                 <Route path='/counter'>
-                    <CounterPage initialCount={0}/>
+                    <CounterPage initialCount={0} />
+                </Route>
+                <Route path='/list'>
+                    <SortableList />
                 </Route>
             </div>
         </div>

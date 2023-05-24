@@ -25,6 +25,10 @@ function Sidebar(){
         {
             label: 'Table',
             path: '/table'
+        },
+        {
+            label: 'List',
+            path: '/list'
         }
     ]
     const renderedLinks = links.map((link) => {
