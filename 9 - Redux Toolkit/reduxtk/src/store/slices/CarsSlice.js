@@ -1,19 +1,24 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const carsSlice = createSlice({
     name: 'cars',
-    initialState: [{name: 'Chevrolet Camaro', price: 100000}],
+    initialState: {
+        searchTerm: '',
+        data: []
+    },
     reducers: {
         addCar(state,action) {
-            state.push(action.payload)
+            state.data.push({...action.payload, id: nanoid()})
         }, 
         deleteCar(state,action) {
-            const index = state.indexOf(action.payload)
-            state.splice(index, 1)
+            const index = state.data.indexOf(action.payload)
+            state.data.splice(index, 1)
+        },
+        changeSearchTerm(state,action) {
+            state.searchTerm = action.payload
         }
     }
 })
 
-export const {addCar, deleteCar} = carsSlice.actions
+export const {addCar, deleteCar, changeSearchTerm} = carsSlice.actions
 export const carsReducer = carsSlice.reducer

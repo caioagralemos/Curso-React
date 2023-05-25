@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 function CarValue (){
     const cars = useSelector((state) => {
-        return state.cars
+        return state.cars.data
     })
     var value = 0
     for (let index = 0; index < cars.length; index++) {
