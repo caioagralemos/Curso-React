@@ -2,18 +2,24 @@ import { useDispatch, useSelector } from "react-redux"
 import { deleteCar } from "../store"
 function CarList() {
     const dispatch = useDispatch()
-    const searchTerm = useSelector((state) => {
-        return state.cars.searchTerm
-    })
-    const cars = useSelector((state) => {
-        return state.cars.data
-    })
+    const { cars, name } = useSelector(({ form, cars: { data, searchTerm } }) => {
+        const filteredCars = data.filter((car) =>
+            car.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+
+        return {
+            cars: filteredCars,
+            name: form.name,
+        };
+    });
     const handleDelete = (car) => {
         dispatch(deleteCar(car))
         console.log(cars)
     }
     const renderedCars = cars.map((car) => {
-        return <div className="panel" key={car.id}>
+        const bold = name && car.name.toLowerCase().includes(name.toLowerCase())
+
+        return <div className={`panel ${bold && 'bold'}`} key={car.id}>
             <p>
                 {car.name} - {car.price}
             </p>
@@ -22,32 +28,14 @@ function CarList() {
             </button>
         </div>
     })
-    if (searchTerm === '') {
-        return (
-            <div className="car-list">
-                {renderedCars}
-                <hr />
-            </div>
-        )
-    } else {
-        const searchedCars = cars.filter(car => car.name.toLowerCase() == searchTerm.toLowerCase())
-        const renderedSC = searchedCars.map((car) => {
-            return <div className="panel" key={car.id}>
-                <p>
-                    {car.name} - {car.price}
-                </p>
-                <button className="button is-danger" onClick={() => handleDelete(car)}>
-                    delete
-                </button>
-            </div>
-        })
-        return (
-            <div className="car-list">
-                {renderedSC}
-                <hr />
-            </div>
-        )
-    }
+
+
+    return (
+        <div className="car-list">
+            {renderedCars}
+            <hr />
+        </div>
+    );
 }
 
 export default CarList
