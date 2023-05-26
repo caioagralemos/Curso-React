@@ -1,14 +1,6 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "name": "Caio"
-        },
-        {
-            "id": 2,
-            "name": "Bruna"
-        }
-    ],
-    "albums": [],
-    "photos": []
+  "users": [
+  ],
+  "albums": [],
+  "photos": []
 }

@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { usersReducer } from "./slices/usersSlice";
-import { fetchUsers } from "./thunks/fetchUsers";
 
 export const store = configureStore({
     reducer: {
@@ -9,3 +8,4 @@ export const store = configureStore({
 })
 
 export * from "./thunks/fetchUsers" // pegue tudo que foi exportado em fetchUsers e exporte aqui tb
+export * from './thunks/addUser'
