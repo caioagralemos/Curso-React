@@ -20,7 +20,7 @@ const albumsApi = createApi({
                 }
             }),
             addAlbum: builder.mutation({
-                query: () => {
+                query: (user) => {
                     return{
                         url: '/albums',
                         method: 'POST',
