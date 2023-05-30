@@ -1,14 +1,29 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { faker } from '@faker-js/faker'
 
+// DEVELOPMENT ONLY
+const pause = (duration) => {
+    return new Promise((resolve) => {
+        setTimeout(resolve, duration);
+    })
+}
+
 const albumsApi = createApi({
     reducerPath: 'albums',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:3005'
+        baseUrl: 'http://localhost:3005',
+        fetchFn: async(...args) => { // uma func que é executada ao fazer o fetch, normalmente ela só é um fetch(args)
+            await pause(1000) // aqui introduzimos um pause de 1000ms
+            return fetch(...args) // depois fazemos ela voltar ao mesmo ponto
+        }
     }),
     endpoints(builder) {
         return {
             fetchAlbums: builder.query({ // query pra pegar dados ou mutation pra alterar algo
+                providesTags: (result, error, user) => {
+                    return [{type: 'Album', id: user.id}]// dá a esses dados uma tag de Album
+                },
+                // assim que os dados na tag Album estiverem ultrapassados, ele vai dar outra request
                 query: (user) => {
                     return {
                         url: '/albums', // relative path da url
@@ -20,6 +35,9 @@ const albumsApi = createApi({
                 }
             }),
             addAlbum: builder.mutation({
+                invalidatesTags: (result, error, user) => { // esse hook vai retornar apenas a tag pra o usuário em que adicionemos um album
+                    return [{type: 'Album', id: user.id}] // avisa que quando isso for executado os dados na tag Album estarão ultrapassados
+                },
                 query: (user) => {
                     return{
                         url: '/albums',
