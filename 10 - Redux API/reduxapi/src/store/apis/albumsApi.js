@@ -21,7 +21,11 @@ const albumsApi = createApi({
         return {
             fetchAlbums: builder.query({ // query pra pegar dados ou mutation pra alterar algo
                 providesTags: (result, error, user) => {
-                    return [{type: 'Album', id: user.id}]// dá a esses dados uma tag de Album
+                    const tags = result.map(album => { // result é a nossa lista de albums
+                        return {type: 'Album', id: album.id}
+                    })
+                    tags.push({type: 'UsersAlbums', id: user.id}) // dá a esses dados uma tag de Album
+                    return tags
                 },
                 // assim que os dados na tag Album estiverem ultrapassados, ele vai dar outra request
                 query: (user) => {
@@ -36,7 +40,7 @@ const albumsApi = createApi({
             }),
             addAlbum: builder.mutation({
                 invalidatesTags: (result, error, user) => { // esse hook vai retornar apenas a tag pra o usuário em que adicionemos um album
-                    return [{type: 'Album', id: user.id}] // avisa que quando isso for executado os dados na tag Album estarão ultrapassados
+                    return [{type: 'UsersAlbums', id: user.id}] // avisa que quando isso for executado os dados na tag Album estarão ultrapassados
                 },
                 query: (user) => {
                     return{
@@ -50,8 +54,8 @@ const albumsApi = createApi({
                 }
             }),
             deleteAlbum: builder.mutation({
-                invalidatesTags: (result, error, user) => { // esse hook vai retornar apenas a tag pra o usuário em que adicionemos um album
-                    return [{type: 'Album', id: user.id}] // avisa que quando isso for executado os dados na tag Album estarão ultrapassados
+                invalidatesTags: (result, error, album) => { // esse hook vai retornar apenas a tag pra o usuário em que adicionemos um album
+                    return [{type: 'Album', id: album.id}] // avisa que quando isso for executado os dados na tag Album estarão ultrapassados
                 },
                 query: (album) => {
                     return{
