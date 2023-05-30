@@ -20,11 +20,7 @@ export default function AlbumsList({ user }) {
         content = <div>Erro carregando album</div>
     } else {
         content = data.map((d) => {
-            const header = <div>{d.title}</div>
-
-            return <AlbumsListItem key={d.id} album={d} >
-                List of Photos
-            </AlbumsListItem>
+            return <AlbumsListItem key={d.id} album={d} />
         })
     }
 

@@ -48,6 +48,17 @@ const albumsApi = createApi({
                         }
                     }
                 }
+            }),
+            deleteAlbum: builder.mutation({
+                invalidatesTags: (result, error, user) => { // esse hook vai retornar apenas a tag pra o usuário em que adicionemos um album
+                    return [{type: 'Album', id: user.id}] // avisa que quando isso for executado os dados na tag Album estarão ultrapassados
+                },
+                query: (album) => {
+                    return{
+                        url: `/albums/${album.id}`,
+                        method: 'DELETE'
+                    }
+                }
             })
         }
     }
@@ -56,5 +67,5 @@ const albumsApi = createApi({
 
 // albumsApi.useFetchAlbumsQuery() -- nosso hook quando formos usar no add
 
-export const {useFetchAlbumsQuery, useAddAlbumMutation} = albumsApi
+export const {useFetchAlbumsQuery, useAddAlbumMutation, useDeleteAlbumMutation} = albumsApi
 export {albumsApi}
