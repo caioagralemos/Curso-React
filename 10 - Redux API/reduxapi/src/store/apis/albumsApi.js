@@ -2,18 +2,18 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { faker } from '@faker-js/faker'
 
 // DEVELOPMENT ONLY
-const pause = (duration) => {
-    return new Promise((resolve) => {
-        setTimeout(resolve, duration);
-    })
-}
+// const pause = (duration) => {
+//     return new Promise((resolve) => {
+//         setTimeout(resolve, duration);
+//     })
+// }
 
 const albumsApi = createApi({
     reducerPath: 'albums',
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:3005',
         fetchFn: async(...args) => { // uma func que é executada ao fazer o fetch, normalmente ela só é um fetch(args)
-            await pause(1000) // aqui introduzimos um pause de 1000ms
+            // await pause(1000) // aqui introduzimos um pause de 1000ms
             return fetch(...args) // depois fazemos ela voltar ao mesmo ponto
         }
     }),

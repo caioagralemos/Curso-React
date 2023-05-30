@@ -9,17 +9,27 @@ const photosApi = createApi({
     endpoints(builder){
         return {
             fetchPhotos: builder.query({
+                providesTags: (result, error, album) => {
+                    const tags = result.map(photo => {
+                        return {type: 'Photo', id: photo.id}
+                    })
+                    tags.push({type: 'AlbumPhotos', id: album.id}) 
+                    return tags
+                },
                 query: (album) => {
                     return {
-                        url: '/photos', // relative path da url
+                        url: '/photos',
                         params: {
-                            albumId: album.id, // query string (/albums/userId=user.id)
+                            albumId: album.id,
                         },
-                        method: 'GET' // método da request
+                        method: 'GET' 
                     }
                 }
             }),
             addPhoto: builder.mutation({
+                invalidatesTags: (result, error, album) => { // esse hook vai retornar apenas a tag pra o usuário em que adicionemos um album
+                    return [{type: 'AlbumPhotos', id: album.id}] // avisa que quando isso for executado os dados na tag Album estarão ultrapassados
+                },
                 query: (album) => {
                     return {
                         method: 'POST',
@@ -32,9 +42,12 @@ const photosApi = createApi({
                 }
             }),
             deletePhoto: builder.mutation({
+                invalidatesTags: (result, error, photo) => { // esse hook vai retornar apenas a tag pra o usuário em que adicionemos um album
+                    return [{type: 'Photo', id: photo.id}] // avisa que quando isso for executado os dados na tag Album estarão ultrapassados
+                },
                 query: (photo) => {
                     return {
-                        method: 'POST',
+                        method: 'DELETE',
                         url: `/photos/${photo.id}`
                     }
                 }

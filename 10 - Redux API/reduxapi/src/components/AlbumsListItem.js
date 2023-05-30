@@ -11,10 +11,10 @@ export default function AlbumsListItem({ album }) {
         deleteAlbum(album)
     }
 
-    const header = <div>
-        <Button onClick={handleDelete} loading={results.isLoading}><GoTrashcan /></Button>
+    const header = <>
+        <Button className='mr-2' onClick={handleDelete} loading={results.isLoading}><GoTrashcan /></Button>
         {album.title}
-    </div>
+    </>
 
     return <ExpandablePanel key={album.id} header={header}>
         <PhotosList album={album} />

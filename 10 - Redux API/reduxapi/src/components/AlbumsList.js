@@ -1,5 +1,4 @@
 import { useFetchAlbumsQuery, useAddAlbumMutation } from "../store"
-import ExpandablePanel from "./ExpandablePanel"
 import Skeleton from './Skeleton'
 import Button from './Button'
 import AlbumsListItem from "./AlbumsListItem"
@@ -28,9 +27,7 @@ export default function AlbumsList({ user }) {
         <div>
             <div className='m-2 flex flex-row items-center justify-between'>
                 <h3 className="text-lg font-bold">Albums for {user.name}</h3>
-                <div className='flex right-0'>
                     <Button loading={results.isFetching} onClick={handleAddAlbum}>+ Add Album</Button>
-                </div>
             </div>
             <div>
                 {content}
